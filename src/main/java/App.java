@@ -9,10 +9,23 @@ public class App {
     public static void main(String[] args) {
         Vehicle v1 = new Vehicle("Car1", "BrandA");
         Vehicle v2 = new Vehicle("Car2", "BrandB");
+        Car c1 = new Car("SpeedingCar", "BrandCar");
         v1.speedUp(40);
         v2.speedUp(30);
+        c1.speedUp(200);
     }
 }
+    class Car extends Vehicle {
+        public Car (String _name, String _brand){
+            super(_name,_brand);
+        }
+        public void speedUp(int speed){
+            if (speed < 80)
+                super.speedUp(speed);
+            else
+                System.out.println("Speed up failed!");
+        }
+    }
     class Vehicle{
 
         private String name;
@@ -24,9 +37,6 @@ public class App {
         public void speedUp(int speed) {
             System.out.println("Name: "+this.name+"Brand: "+this.brand+" speed up by "+speed);
         }
-
-
-
 
     }
 
