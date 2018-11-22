@@ -10,20 +10,56 @@ public class App {
         Vehicle v1 = new Vehicle("Car1", "BrandA");
         Vehicle v2 = new Vehicle("Car2", "BrandB");
         Car c1 = new Car("SpeedingCar", "BrandCar");
+        Bus b1 = new Bus("ABUS", "KMB");
         v1.speedUp(40);
         v2.speedUp(30);
         c1.speedUp(79);
         c1.speedUp(200);
+        Driver d1 = new Driver(v1, "Driver1");
+        d1.speedUp(79);
+        Driver d2 = new Driver(c1, "CarDriver");
+        d2.speedUp(79);
+        Driver d3 = new Driver(b1, "BusDriver");
+        d3.speedUp(30);
     }
 }
+    class Driver{
+        Vehicle vehicle;
+        String name;
+        public Driver(Vehicle vehicle, String name){
+            this.vehicle = vehicle;
+            this.name = name;
+        }
+        public void speedUp(int speed){
+            System.out.print("Driver name: "+this.name+" ");
+            this.vehicle.speedUp(speed);
+        }
+    }
+    class Bus extends Vehicle {
+        public Bus(String _name, String _brand) {
+            super(_name, _brand);
+        }
+
+        @Override
+        public void speedUp(int speed) {
+            if (speed < 40) {
+                super.speedUp(speed);
+                System.out.println("Driving Bus ");
+            } else
+                System.out.println("Bus Speed up failed!");
+
+        }
+    }
     class Car extends Vehicle {
         public Car (String _name, String _brand){
             super(_name,_brand);
         }
         @Override
         public void speedUp(int speed){
-            if (speed < 80)
+            if (speed < 80) {
                 super.speedUp(speed);
+                System.out.println("Driving Car ");
+            }
             else
                 System.out.println("Speed up failed!");
         }
