@@ -12,6 +12,7 @@ public class App {
         Car c1 = new Car("SpeedingCar", "BrandCar");
         v1.speedUp(40);
         v2.speedUp(30);
+        c1.speedUp(79);
         c1.speedUp(200);
     }
 }
@@ -19,6 +20,7 @@ public class App {
         public Car (String _name, String _brand){
             super(_name,_brand);
         }
+        @Override
         public void speedUp(int speed){
             if (speed < 80)
                 super.speedUp(speed);
